@@ -19,9 +19,10 @@ spec:
         effect: NoSchedule
       securityContext:
         runAsUser: 1000
+        fsGroup: 997
       containers:
       - name: cpu-load-blinkt
-        image: dvdmuckle/cpu-load-blinkt-k8s
+        image: heskew/cpu-load-blinkt-k8s:upd
         imagePullPolicy: Always
         lifecycle:
          preStop:
@@ -36,4 +37,4 @@ spec:
       volumes:
       - name: devmem
         hostPath:
-          path: /dev/mem
+          path: /dev/gpiomem

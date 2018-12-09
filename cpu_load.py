@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-import time
 from sys import exit
+import signal
+import time
 
 try:
     import psutil
@@ -32,9 +33,9 @@ def show_graph(v, r, g, b):
 
     blinkt.show()
 
-blinkt.set_brightness(0.1)
+blinkt.set_brightness(0.9)
 
 while running:
     v = psutil.cpu_percent() / 100.0
-    show_graph(v, 255, 255, 255)
-    time.sleep(1)
+    show_graph(v, int(v*8)*10, int((1-v)*8)*5, 0)
+    time.sleep(4)
